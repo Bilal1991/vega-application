@@ -18,6 +18,7 @@ import { Vehicle } from '../models/vehicle';
 export class VehicleFormComponent implements OnInit {
   makes: Makes[];
   SelectedMake: Makes
+  mode: string
   vehicle: SaveVehicle =
     {
       id: 0,
@@ -32,6 +33,9 @@ export class VehicleFormComponent implements OnInit {
   constructor(private vehiclService: VehicleService, private route: ActivatedRoute, private router: Router) {
     route.params.subscribe(p => {
       this.vehicle.id = +p['id'];
+      if (this.vehicle.id)
+        this.mode = "Edit Vehicle";
+      else this.mode = "New Vehicle";
       
     });
   }

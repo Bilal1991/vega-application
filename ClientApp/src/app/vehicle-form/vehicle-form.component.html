@@ -1,7 +1,7 @@
-<h2>New Vehicle</h2>
+<h2>{{mode}}</h2>
 <form #f="ngForm" method="post" (ngSubmit)="submit()">
   <div class="form-group">
-    <p>{{vehicle|json}}</p>
+
     <div class="col-10">
       <label for="Make">Make</label>
     </div>
@@ -25,6 +25,7 @@
       <div class="alert alert-danger" *ngIf="model.touched && !model.valid">please specify model</div>
     </div>
   </div>
+  <h4>Is Registered</h4>
   <div class="form-check-inline">
     <label class="form-check-label">
       <input type="radio" id="rdoRegistered" class="form-check-input" [value]="true" name="isRegisterd" [(ngModel)]="vehicle.isRegisterd">Yes
@@ -59,5 +60,5 @@
     <input type="email" class="form-control" id="txtContactEmail" [(ngModel)]="vehicle.contact.email" name="contactEmail">
   </div>
   <button id="btnSave" type="button" [disabled]="!f.valid" class="btn btn-primary" (click)="submit()">Save</button>
-  <button id="btnDelete" *ngIf="vehicle.id" type="button" [disabled]="!f.valid" class="btn btn-danger"  (click)="Delete()">Delete</button>
+  <button id="btnDelete" *ngIf="vehicle.id" type="button" [disabled]="!f.valid" class="btn btn-danger" (click)="Delete()">Delete</button>
 </form>
